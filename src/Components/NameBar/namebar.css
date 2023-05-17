@@ -1,0 +1,7 @@
+.name-bar{
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: var(--primary-card);
+    color: var(--primary);
+}

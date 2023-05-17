@@ -1,0 +1,39 @@
+.login-base{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-dialog{
+    min-width: 30vw;
+    height: auto;
+    padding: 20px;
+    background-color: var(--primary-card);
+    border-radius: 36px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.label{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.login-label{
+    font-family:'Courier New', Courier, monospace;
+    margin: 5px;
+    color: var(--primary);
+    font-size: 2em;
+}
+.login-label.big{
+    font-size: 3em;
+}
+
+button {
+    margin: 5px;
+}

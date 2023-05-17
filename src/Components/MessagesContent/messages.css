@@ -1,0 +1,21 @@
+.messages {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    display: flex;
+    width: fit-content;
+    max-width: 50%;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    margin: 10px;
+}
+.message p {
+    margin: 10px;
+}
+.my-message{
+    align-self: flex-end;
+}

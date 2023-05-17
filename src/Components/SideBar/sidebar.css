@@ -1,0 +1,29 @@
+.side-bar{
+    background-color: var(--primary-card);
+    height: 100%;
+    width: auto;
+    max-width: 20vw;
+    transition-duration: 500ms;
+}
+
+.buttons-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.add-contact-base{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.contact{
+    border-bottom: 2px solid var(--primary);
+    color: var(--primary);
+    transition-duration: 500ms;
+}
+.contact:hover{
+    background-color: var(--on-hover);
+    padding: 5px;
+}

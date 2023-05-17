@@ -1,13 +1,59 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    --primary: #b3c91a;
+    --primary-hover: #a2b30e;
+    --primary-card: #2c2c2b;
+    --text-on-card: white;
+
+    --on-hover: rgba(255, 255, 255, 0.1);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input {
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.5em;
+    text-align: center;
+    transition-duration: 500ms;
+    border: 2px solid var(--primary);
+    background: none;
+    color: var(--text-on-card)
 }
+input:focus{
+    box-shadow: 0 0 5px 3px var(--primary);
+}
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button{
+    background-color: var(--primary);
+    border: none;
+    border-radius: 12px;
+    font-size: 1.5em;
+    transition-duration: 500ms;
+}
+button:hover{
+    background-color: var(--primary-hover);
+}
+
+
+.icon-button{
+    color: var(--primary);
+}
+
+#root{
+    height: 100%;
+}
+
