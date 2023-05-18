@@ -23,19 +23,20 @@ export default function Auth(){
 
     const sendData = () => {
         if (inputData.id && inputData.token){
-            localStorage.setItem('id', inputData.id);
-            localStorage.setItem('token', inputData.token);
+            localStorage.setItem('id', inputData.id);           //store id
+            localStorage.setItem('token', inputData.token);     //store token
+            localStorage.setItem('story', JSON.stringify({}));  //prep story of messages
 
             authUser()
-            .then((data: IStateInstance) => {
+            .then((data: IStateInstance) => {                   //200
                 setAlert({
                     message: 'Authorized',
                     severity: 'success'
                 });
-                navigate('/');
+                navigate('/');                                  //go to chat
             })
-            .catch((err: Error) => {
-                const authHandling: errHandlingMessage = {
+            .catch((err: Error) => {                            //err
+                const authHandling: errHandlingMessage = {      //with message == res.status
                     '401': 'Wrong id or token',
                     'Failed to fetch': 'Uncorrect format of data'
                 }

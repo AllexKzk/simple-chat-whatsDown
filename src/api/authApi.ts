@@ -1,4 +1,3 @@
-import { SetStateAction } from "react";
 import sendReq from "./api";
 import { IStateInstance } from "./interfaces";
 

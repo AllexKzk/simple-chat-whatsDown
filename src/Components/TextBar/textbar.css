@@ -5,21 +5,24 @@
     margin: 10px;
 }
 
-.textarea-base{
+.message-input{
     width: 100%;
-    display: flex;
-    justify-content: center;
+    padding: 10px 20px;
     border-radius: 18px;
-    border: 2px solid var(--primary);
-}
-
-textarea{
-    width: 100%;
-    margin: 10px 20px;
     resize: none;
     height: fit-content;
-    border: none;
     outline: none;
     font-size:x-large;
     background: none;
+    border:2px solid var(--primary-hover);
+    transition-duration: 500ms;
+    color: var(--primary);
+}
+.message-input:focus{
+    border:2px solid var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.send-icon{
+    color: var(--primary);
 }
