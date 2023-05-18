@@ -40,6 +40,7 @@ input::-webkit-inner-spin-button {
 button{
     background-color: var(--primary);
     border: none;
+    padding: 5px;
     border-radius: 12px;
     font-size: 1.5em;
     transition-duration: 500ms;
