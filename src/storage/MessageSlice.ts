@@ -19,8 +19,8 @@ export const MessageSlice = createSlice({
         },
         storeMessage(state, action: PayloadAction<{wId: string, message: IMessage}>){
             const wId = action.payload.wId;
-            const wIdStory = current(state)[wId].concat(action.payload.message)
-            return {...state, [wId]: wIdStory};
+            const wIdStory = current(state)[wId] || [];
+            return {...state, [wId]: wIdStory.concat(action.payload.message)};
         },
     }
 });

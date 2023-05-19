@@ -7,8 +7,8 @@ import { Alert, AlertColor } from '@mui/material';
 import { IStateInstance, errHandlingMessage } from '../../api/interfaces';
 
 interface IAuth{
-    id: string | undefined, 
-    token: string | undefined
+    id: string, 
+    token: string
 }
 
 interface IAlert{
@@ -17,12 +17,12 @@ interface IAlert{
 }
 
 export default function Auth(){
-    const [inputData, setData] = useState<IAuth>({id: undefined, token: undefined});
+    const [inputData, setData] = useState<IAuth>({id: '', token: ''});
     const [alert, setAlert] = useState<IAlert | undefined>(undefined);
     const navigate = useNavigate();
 
     const sendData = () => {
-        if (inputData.id && inputData.token){
+        if (inputData.id.length && inputData.token.length){
             localStorage.setItem('id', inputData.id);           //store id
             localStorage.setItem('token', inputData.token);     //store token
             localStorage.setItem('story', JSON.stringify({}));  //prep story of messages

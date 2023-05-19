@@ -9,11 +9,11 @@ export default function Main() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!localStorage.getItem('token') || !localStorage.getItem('id') || !localStorage.getItem('story')) //simple guard
-			navigate('/login');																				 //by localstorage
-		else{
-			store.dispatch(setApiListener());
-		}
+      if (!localStorage.getItem('token') || !localStorage.getItem('id') || !localStorage.getItem('story')) //simple guard
+		navigate('/login');																				 //by localstorage
+      else{
+        store.dispatch(setApiListener());
+      }
     }, []);
 
   return (

@@ -1,21 +1,10 @@
 .side-bar{
     background-color: var(--primary-card);
     height: 100%;
-    width: auto;
+    width: fit-content;
     max-width: 20vw;
     transition-duration: 500ms;
-}
-
-.modal {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--primary-card);
-    width: 500px;
-    max-width: 50vw;
-    margin: 30vh auto;
-    word-wrap:break-word;
-    border-radius: 18px;
-    padding: 10px;
+    overflow-y: auto;
 }
 
 .buttons-block {
