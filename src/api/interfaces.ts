@@ -1,3 +1,5 @@
+
+//options for request:
 export interface IReqOptions{
     method: string,
     headers: {
@@ -6,6 +8,7 @@ export interface IReqOptions{
     body: string | undefined
 };
 
+//authorizations response:
 export interface IStateInstance{
     stateInstance: string
 };
@@ -15,12 +18,14 @@ export interface IMessage{
     isMine: boolean
 };
 
+//format {err: message}
 export type errHandlingMessage = {
     [propKey: string]: string;
 };
 
+//format {chatId: messages}
 export interface IMessageStory{
-    [number: string]: IMessage[]
+    [chatId: string]: IMessage[]
 };
 
 export interface IReceiveNotification{

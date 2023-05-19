@@ -11,13 +11,6 @@ import { Provider } from "react-redux";
 import { store } from "./storage/Store";
 
 export default function App() {
-    //navigation in chats by numbers
-    if (false){ //just for fast clean
-        localStorage.removeItem('story');
-        localStorage.removeItem('token');
-        localStorage.removeItem('id');
-    }
-    
     return(
         <Provider store={store}>
             <Router>

@@ -6,8 +6,7 @@ export const ApiListener = createSlice({
     initialState: false,
     reducers: {
         setApiListener(state) {
-            console.log('set api', state);
-            if (!state)
+            if (!state)         //once setted
                 setListener();
             return true;
         }

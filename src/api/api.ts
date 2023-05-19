@@ -7,7 +7,7 @@ export default function sendReq<T>(reqUrl: string, options: IReqOptions, query: 
     if (!idInstance || !apiTokenInstance)
         throw 'Unauthorized';
 
-    const fullUrl = `https://api.green-api.com/waInstance${idInstance}/${reqUrl}/${apiTokenInstance}/${query}`
+    const fullUrl = `https://api.green-api.com/waInstance${idInstance}/${reqUrl}/${apiTokenInstance}/${query}`;
 
     return fetch(fullUrl, options)
         .then(response => {

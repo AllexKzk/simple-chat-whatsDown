@@ -1,5 +1,5 @@
 html, body {
-    height: 100%;
+    height: 100%; 
     margin: 0;
     background-color: #000000;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -49,7 +49,6 @@ button{
 button:hover{
     background-color: var(--primary-hover);
 }
-
 
 .icon-button{
     color: var(--primary);

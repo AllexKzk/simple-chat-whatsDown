@@ -4,8 +4,8 @@ import ApiListener from "./ApiListener";
 
 export const store = configureStore({ 
     reducer: {
-        story: MessageSlice,
-        listener: ApiListener
+        story: MessageSlice,        //store all chat's messages story
+        listener: ApiListener       //listen new notifications
     } 
 });
 

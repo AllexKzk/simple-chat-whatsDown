@@ -9,17 +9,17 @@ import { storeMessage } from "../../storage/MessageSlice";
 import { useEffect, useState } from "react";
 
 export default function Chat(){
-    const {contact} = useParams<{contact: string}>();
-    const [messageStory, setStory] = useState<IMessage[]>(contact ? store.getState().story[contact] : []);
+    const {contact} = useParams<{contact: string}>();                                                     //get contact chatId from url
+    const [messageStory, setStory] = useState<IMessage[]>(contact ? store.getState().story[contact] : []);//get story from Redux or []
 
     useEffect(() => {
-        setStory(contact ? store.getState().story[contact] : [])
+        setStory(contact ? store.getState().story[contact] : []);
     }, [contact]);
 
-    if (!contact || isNaN(parseInt(contact)))
+    if (!contact || isNaN(parseInt(contact)))           //if you try to get '/chat/{NaN}' - better to use regex v_v
         return (<h1 style={{color: 'var(--primary)'}}>Wrong contact number.</h1>);
 
-    store.subscribe(() => {
+    store.subscribe(() => {                             //update messages story
         setStory(store.getState().story[contact]);
     });
 

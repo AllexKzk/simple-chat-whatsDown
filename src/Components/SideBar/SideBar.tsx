@@ -15,28 +15,24 @@ export default function SideBar(){
     const [modalOpened, setModal] = useState(false);
     const [chats, updateChats] = useState<IMessageStory>(store.getState().story); //array of opened chats
 
-    const toggleSidebar = () =>{
-        setHidden(!isHidden);
-    }
-
-    store.subscribe(() => updateChats(store.getState().story))
-
-    const addNewContact = (contact: string) => {
-        store.dispatch(storeContact(contact));
-    }
+    store.subscribe(() => updateChats(store.getState().story));
 
     return (
         <>
-            <AddContactModal isOpened={modalOpened} closeCallback={() => setModal(false)} addCallback={(contact: string) => addNewContact(contact)}/>
+            <AddContactModal isOpened={modalOpened} closeCallback={() => setModal(false)} 
+                            addCallback={(contact: string) => store.dispatch(storeContact(contact))}
+            />
+
             <div className='side-bar'>
                 <div className='buttons-block'>
                     <IconButton sx={{display: isHidden ? 'none' : ''}} onClick={() => setModal(true)}>
                         <PersonAddAlt1Icon className='icon-button'/>
                     </IconButton>
-                    <IconButton onClick={() => toggleSidebar()}>
+                    <IconButton onClick={() => setHidden(!isHidden)}>
                         <ArrowBackIosIcon sx={{transition: 'transform .5s', color: 'var(--primary)', transform: `rotate(${isHidden ? 0 : 180}deg)`}}/>
                     </IconButton>
                 </div>
+
                 <div style={{display: isHidden ? 'none' : ''}}>
                     {
                         Object.keys(chats).map((contact) => <Contact name={contact} />)

@@ -8,6 +8,7 @@ interface IAddContact{
     addCallback: (contact: string) => void
 }
 
+//modal for adding new contact:
 export default function AddContactModal(props: IAddContact) {
     const [contact, setContact] = useState<string>('');
 
@@ -16,8 +17,8 @@ export default function AddContactModal(props: IAddContact) {
         props.closeCallback();
     }
 
-    const addContact = () => {
-        if (contact.length && !isNaN(parseInt(contact))) //FIX: handle non-phone numbers
+    const addContact = () => {                              //open new chat
+        if (contact.length && !isNaN(parseInt(contact)))    //better to use regex
             props.addCallback(`${contact}@c.us`);
         closeModal();
     }

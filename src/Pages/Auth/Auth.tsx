@@ -40,6 +40,7 @@ export default function Auth(){
                     '401': 'Wrong id or token',
                     'Failed to fetch': 'Uncorrect format of data'
                 }
+                localStorage.clear();                           //clear setted data
                 setAlert({
                     message: authHandling[err.message],
                     severity: 'error'

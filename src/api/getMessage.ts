@@ -36,5 +36,6 @@ export default async function setListener(){
         } while (localStorage.getItem('token')); //loop handler >_< it's really better to use socket or webhook
     } catch(err) {
         console.log(err);
+        setListener();
     }
 }

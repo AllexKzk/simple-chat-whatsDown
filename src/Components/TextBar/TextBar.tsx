@@ -9,7 +9,7 @@ export default function TextBar(props: {chatId: string, sendCallback: (msg: IMes
     const [message, setMessage] = useState<string>('');
 
     const submitSend = () => {
-        if (message.length)
+        if (message.length){
             sendMessage({
                 message: message,
                 chatId: props.chatId
@@ -22,11 +22,19 @@ export default function TextBar(props: {chatId: string, sendCallback: (msg: IMes
             }).catch((err: Error) => {
                 console.log(err.message);
             });
+        }
+    }
+
+    const keyPressed = (ev: any) => { //send message by pressing Enter
+        if (ev.key === 'Enter'){
+            ev.preventDefault();
+            submitSend();
+        }
     }
 
     return (
         <div className='text-bar'>
-            <TextareaAutosize onChange={(ev) => setMessage(ev.target.value)} value={message} maxRows={4} placeholder='Input...' className='message-input'/>
+            <TextareaAutosize onKeyDown={(ev) => keyPressed(ev)} onChange={(ev) => setMessage(ev.target.value)} value={message} maxRows={4} placeholder='Input...' className='message-input'/>
             <IconButton onClick={submitSend}>
                 <SendIcon className='send-icon'/>
             </IconButton>
