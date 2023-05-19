@@ -3,8 +3,11 @@ import './textbar.css';
 import { IconButton, TextareaAutosize } from '@mui/material';
 import sendMessage from '../../api/sendMessage';
 import { useState } from 'react';
+import { store } from '../../storage/Store';
+import { storeMessage } from '../../storage/MessageSlice';
+import { IMessage } from '../../api/interfaces';
 
-export default function TextBar(props: {chatId: string}){
+export default function TextBar(props: {chatId: string, sendCallback: (msg: IMessage) => void}){
     const [message, setMessage] = useState<string>('');
 
     const submitSend = () => {
@@ -13,6 +16,10 @@ export default function TextBar(props: {chatId: string}){
                 message: message,
                 chatId: props.chatId
             }).then((answer: {idMessage: string}) => {
+                props.sendCallback({
+                    text: message,
+                    isMine: true,
+                })
                 setMessage('');
             }).catch((err: Error) => {
                 console.log(err.message);

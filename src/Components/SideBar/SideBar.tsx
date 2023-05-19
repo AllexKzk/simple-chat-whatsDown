@@ -6,6 +6,8 @@ import { IconButton } from '@mui/material';
 import { IMessageStory } from '../../api/interfaces';
 import './sidebar.css';
 import AddContactModal from './addContact';
+import { store } from '../../storage/Store';
+import { storeContact } from '../../storage/MessageSlice';
 
 
 export default function SideBar(){
@@ -23,14 +25,15 @@ export default function SideBar(){
         setHidden(!isHidden);
     }
 
-    const addContact = (contact: string) => {
-        updateChats({...chats, [contact]: []});
-        localStorage.setItem('story', JSON.stringify({...chats, [contact]: []}));
+    store.subscribe(() => updateChats(store.getState()))
+
+    const addNewContact = (contact: string) => {
+        store.dispatch(storeContact(contact));
     }
 
     return (
         <>
-            <AddContactModal isOpened={modalOpened} closeCallback={() => setModal(false)} addCallback={(contact: string) => addContact(contact)}/>
+            <AddContactModal isOpened={modalOpened} closeCallback={() => setModal(false)} addCallback={(contact: string) => addNewContact(contact)}/>
             <div className='side-bar'>
                 <div className='buttons-block'>
                     <IconButton sx={{display: isHidden ? 'none' : ''}} onClick={() => setModal(true)}>

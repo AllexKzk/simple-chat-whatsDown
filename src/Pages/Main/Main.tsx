@@ -9,7 +9,7 @@ export default function Main() {
 
     useEffect(() => {
         if (!localStorage.getItem('token') || !localStorage.getItem('id') || !localStorage.getItem('story')) //simple guard
-			navigate('/login');																				//by localstorage
+			navigate('/login');																				 //by localstorage
     }, []);
 
   return (
