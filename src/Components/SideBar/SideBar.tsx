@@ -1,7 +1,7 @@
 import Contact from './Contact';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { IconButton } from '@mui/material';
 import { IMessageStory } from '../../api/interfaces';
 import './sidebar.css';
@@ -13,19 +13,13 @@ import { storeContact } from '../../storage/MessageSlice';
 export default function SideBar(){
     const [isHidden, setHidden] = useState(false);
     const [modalOpened, setModal] = useState(false);
-    const [chats, updateChats] = useState<IMessageStory>({}); //array of opened chats
-
-    useEffect(() => {
-        const story = localStorage.getItem('story');
-        if (story)
-            updateChats(JSON.parse(story));
-    }, []);
+    const [chats, updateChats] = useState<IMessageStory>(store.getState().story); //array of opened chats
 
     const toggleSidebar = () =>{
         setHidden(!isHidden);
     }
 
-    store.subscribe(() => updateChats(store.getState()))
+    store.subscribe(() => updateChats(store.getState().story))
 
     const addNewContact = (contact: string) => {
         store.dispatch(storeContact(contact));

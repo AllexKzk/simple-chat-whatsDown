@@ -1,9 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit"
 import MessageSlice from "./MessageSlice"
+import ApiListener from "./ApiListener";
 
-export const store = configureStore({ reducer: MessageSlice });
+export const store = configureStore({ 
+    reducer: {
+        story: MessageSlice,
+        listener: ApiListener
+    } 
+});
 
 store.subscribe(() => {
-    console.log('stored localy');
-    localStorage.setItem('story', JSON.stringify(store.getState()));
+    localStorage.setItem('story', JSON.stringify(store.getState().story));
 });

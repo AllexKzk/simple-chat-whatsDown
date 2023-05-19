@@ -17,8 +17,8 @@ export default function AddContactModal(props: IAddContact) {
     }
 
     const addContact = () => {
-        if (contact.length) //FIX: handle non-phone numbers
-            props.addCallback(contact);
+        if (contact.length && !isNaN(parseInt(contact))) //FIX: handle non-phone numbers
+            props.addCallback(`${contact}@c.us`);
         closeModal();
     }
 

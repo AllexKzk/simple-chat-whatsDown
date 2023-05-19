@@ -10,29 +10,28 @@ import { useEffect, useState } from "react";
 
 export default function Chat(){
     const {contact} = useParams<{contact: string}>();
-    const [messageStory, setStory] = useState<IMessage[]>([]);
+    const [messageStory, setStory] = useState<IMessage[]>(contact ? store.getState().story[contact] : []);
 
-    useEffect(()=>{
-        if (contact)
-            setStory(store.getState()[contact] || []); 
-    },[contact]);
+    useEffect(() => {
+        setStory(contact ? store.getState().story[contact] : [])
+    }, [contact]);
 
     if (!contact || isNaN(parseInt(contact)))
         return (<h1 style={{color: 'var(--primary)'}}>Wrong contact number.</h1>);
 
     store.subscribe(() => {
-        setStory(store.getState()[contact]);
+        setStory(store.getState().story[contact]);
     });
 
     const storeSendedMessage = (newMessage: IMessage) => {
-        store.dispatch(storeMessage({ [contact]: [...messageStory, newMessage] }));
+        store.dispatch(storeMessage({wId: contact, message: newMessage}));
     }
 
     return (
         <div className="chat-page">
             <NameBar contact={contact}/>
             <MessagesContent story={messageStory}/>
-            <TextBar sendCallback={(msg: IMessage) => storeSendedMessage(msg)} chatId={`${contact}@c.us`}/>
+            <TextBar sendCallback={(msg: IMessage) => storeSendedMessage(msg)} chatId={contact}/>
         </div>
     );
 }

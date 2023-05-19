@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { IMessage, IMessageStory } from "../api/interfaces";
 
@@ -10,18 +10,18 @@ function initState() {
     return {};
 }
 
-const initialState: IMessageStory = initState();
-
 export const MessageSlice = createSlice({
     name: 'Story',
-    initialState,
+    initialState: initState() as IMessageStory,
     reducers: {
         storeContact(state, action: PayloadAction<string>){
             return {...state, [action.payload]: []};
         },
-        storeMessage(state, action: PayloadAction<IMessageStory>){
-            return  {...state, ...action.payload};
-        }
+        storeMessage(state, action: PayloadAction<{wId: string, message: IMessage}>){
+            const wId = action.payload.wId;
+            const wIdStory = current(state)[wId].concat(action.payload.message)
+            return {...state, [wId]: wIdStory};
+        },
     }
 });
 

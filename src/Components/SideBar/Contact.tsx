@@ -1,7 +1,6 @@
 import { Typography } from '@mui/material';
 import './sidebar.css';
 import { useNavigate } from 'react-router-dom';
-import { IMessage } from '../../api/interfaces';
 
 interface IContact{
     name: string
